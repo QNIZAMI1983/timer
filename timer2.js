@@ -12,13 +12,12 @@ rl.on('line', (input) => {
 
   if (input === 'b') {
     beep();
-  } else if (input >= 1 && input <= 9) {
+  } else if (!isNaN(input) && input >= 1 && input <= 9) {
     console.log(`Setting timer for ${input} seconds...`);
     setTimeout(beep, input * 1000);
   }
 });
 
-rl.on('SIGINT', () => {
+rl.on('close', () => {
   console.log('\nThanks for using me, ciao!');
-  rl.close();
 });
